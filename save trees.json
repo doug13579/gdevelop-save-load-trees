@@ -195,8 +195,8 @@
           "name": "Tree",
           "persistentUuid": "0fa74ff2-006e-4994-8392-90780592a592",
           "width": 0,
-          "x": 113,
-          "y": 393,
+          "x": 132,
+          "y": 462,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -210,8 +210,8 @@
           "name": "Tree",
           "persistentUuid": "fce1640d-06a3-41f7-a3d3-08c7ac46da71",
           "width": 0,
-          "x": 130,
-          "y": 132,
+          "x": 258,
+          "y": 362,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -240,8 +240,8 @@
           "name": "Tree",
           "persistentUuid": "9ed947f3-09a9-4fb4-aaa8-fba863e9c97b",
           "width": 0,
-          "x": 456,
-          "y": 125,
+          "x": 496,
+          "y": 203,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -270,8 +270,8 @@
           "name": "Tree",
           "persistentUuid": "94eb5512-3ce1-4f99-82b9-cb3b087ebfc7",
           "width": 0,
-          "x": 423,
-          "y": 373,
+          "x": 451,
+          "y": 476,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -734,241 +734,81 @@
       ],
       "events": [
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "DepartScene"
-              },
-              "parameters": [
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Rectangle"
-              },
-              "parameters": [
-                "NewShapePainter",
-                "Point1.CenterX()",
-                "Point1.CenterY()",
-                "Point2.CenterX()",
-                "Point2.CenterY()"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Or"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
-                  },
-                  "parameters": [
-                    "LoadButton",
-                    ""
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [],
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "draw the limits for the \"load in range\"",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
           "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Delete"
-                  },
-                  "parameters": [
-                    "Tree",
-                    ""
-                  ]
-                }
-              ]
-            },
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "GroupExists"
+                    "value": "DepartScene"
                   },
                   "parameters": [
-                    "\"Saved\"",
-                    "\"Trees\""
+                    ""
                   ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "LireFichierTxt"
+                    "value": "PrimitiveDrawing::Rectangle"
                   },
                   "parameters": [
-                    "\"Saved\"",
-                    "\"Trees\"",
-                    "",
-                    "TempJson"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "JSONToVariableStructure"
-                  },
-                  "parameters": [
-                    "VariableString(TempJson)",
-                    "Trees"
+                    "NewShapePainter",
+                    "Point1.CenterX()",
+                    "Point1.CenterY()",
+                    "Point2.CenterX()",
+                    "Point2.CenterY()"
                   ]
                 }
-              ],
-              "events": [
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "load tree postitions from storage",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
                 {
-                  "type": "BuiltinCommonInstructions::ForEachChildVariable",
-                  "iterableVariableName": "Trees",
-                  "valueIteratorVariableName": "child",
-                  "keyIteratorVariableName": "",
-                  "conditions": [],
-                  "actions": [
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
                     {
                       "type": {
-                        "value": "Create"
+                        "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
                       },
                       "parameters": [
-                        "",
-                        "Tree",
-                        "Variable(child.X)",
-                        "Variable(child.Y)",
+                        "LoadButton",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "DepartScene"
+                      },
+                      "parameters": [
                         ""
                       ]
                     }
                   ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
-              },
-              "parameters": [
-                "SaveButton",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "VariableClearChildren"
-              },
-              "parameters": [
-                "TreesArray"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Tree",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "TempTree.X",
-                    "=",
-                    "Tree.X()"
-                  ]
                 },
-                {
-                  "type": {
-                    "value": "ModVarScene"
-                  },
-                  "parameters": [
-                    "TempTree.Y",
-                    "=",
-                    "Tree.Y()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SceneVariablePush"
-                  },
-                  "parameters": [
-                    "TreesArray",
-                    "TempTree"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "EcrireFichierTxt"
-                  },
-                  "parameters": [
-                    "\"Saved\"",
-                    "\"Trees\"",
-                    "ToJSON(TreesArray)"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
-              },
-              "parameters": [
-                "LoadInRange",
-                ""
-              ]
-            }
-          ],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Delete"
-                  },
-                  "parameters": [
-                    "Tree",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
                 {
                   "type": {
                     "value": "GroupExists"
@@ -976,184 +816,473 @@
                   "parameters": [
                     "\"Saved\"",
                     "\"Trees\""
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "LireFichierTxt"
-                  },
-                  "parameters": [
-                    "\"Saved\"",
-                    "\"Trees\"",
-                    "",
-                    "TempJson"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "JSONToVariableStructure"
-                  },
-                  "parameters": [
-                    "VariableString(TempJson)",
-                    "Trees"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "SceneVariableChildCount"
-                  },
-                  "parameters": [
-                    "Trees",
-                    ">",
-                    "0"
                   ]
                 }
               ],
               "actions": [],
               "events": [
                 {
-                  "type": "BuiltinCommonInstructions::ForEachChildVariable",
-                  "iterableVariableName": "Trees",
-                  "valueIteratorVariableName": "child",
-                  "keyIteratorVariableName": "",
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Tree",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Load \"Trees\" from \"Saved\" The string is a Json verson of an array of x and y structures. Convert the Json string into an array named Trees. For each child, create a tree"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
                       "type": {
-                        "value": "VarScene"
+                        "value": "GroupExists"
                       },
                       "parameters": [
-                        "child.X",
-                        ">=",
-                        "Point1.X()"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "VarScene"
-                      },
-                      "parameters": [
-                        "child.Y",
-                        ">=",
-                        "Point1.Y()"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "VarScene"
-                      },
-                      "parameters": [
-                        "child.X",
-                        "<=",
-                        "Point2.X()"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "VarScene"
-                      },
-                      "parameters": [
-                        "child.Y",
-                        "<=",
-                        "Point2.Y()"
+                        "\"Saved\"",
+                        "\"Trees\""
                       ]
                     }
                   ],
                   "actions": [
                     {
                       "type": {
-                        "value": "Create"
+                        "value": "LireFichierTxt"
                       },
                       "parameters": [
+                        "\"Saved\"",
+                        "\"Trees\"",
                         "",
-                        "Tree",
-                        "Variable(child.X)",
-                        "Variable(child.Y)",
-                        ""
+                        "TempJson"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "JSONToVariableStructure"
+                      },
+                      "parameters": [
+                        "VariableString(TempJson)",
+                        "Trees"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::ForEachChildVariable",
+                      "iterableVariableName": "Trees",
+                      "valueIteratorVariableName": "child",
+                      "keyIteratorVariableName": "",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Tree",
+                            "Variable(child.X)",
+                            "Variable(child.Y)",
+                            ""
+                          ]
+                        }
                       ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          ],
+          "parameters": []
         },
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "Save the trees",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
             {
-              "type": {
-                "value": "BuiltinCommonInstructions::Or"
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
               },
-              "parameters": [],
-              "subInstructions": [
+              "comment": "create an array of structures named \"TreesArray\", built a temporary structure with the x and y (any information can be added to the structure, size, color, anything) Add the temp structure to the array, convert the array to Json format and save the string to storage"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
                 {
                   "type": {
-                    "value": "DraggableBehavior::Dropped"
+                    "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
                   },
                   "parameters": [
-                    "Point1",
-                    "Draggable"
+                    "SaveButton",
+                    ""
                   ]
-                },
+                }
+              ],
+              "actions": [
                 {
                   "type": {
-                    "value": "DraggableBehavior::Dropped"
+                    "value": "VariableClearChildren"
                   },
                   "parameters": [
-                    "Point2",
-                    "Draggable"
+                    "TreesArray"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "Tree",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "TempTree.X",
+                        "=",
+                        "Tree.X()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "TempTree.Y",
+                        "=",
+                        "Tree.Y()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SceneVariablePush"
+                      },
+                      "parameters": [
+                        "TreesArray",
+                        "TempTree"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "EcrireFichierTxt"
+                      },
+                      "parameters": [
+                        "\"Saved\"",
+                        "\"Trees\"",
+                        "ToJSON(TreesArray)"
+                      ]
+                    }
                   ]
                 }
               ]
             }
           ],
-          "actions": [
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "Load trees in range based on the point1 and point2 coordinates",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
             {
-              "type": {
-                "value": "AjoutObjConcern"
-              },
-              "parameters": [
-                "",
-                "Point1"
-              ]
-            },
-            {
-              "type": {
-                "value": "AjoutObjConcern"
-              },
-              "parameters": [
-                "",
-                "Point2"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Drawer::ClearShapes"
-              },
-              "parameters": [
-                "NewShapePainter"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Rectangle"
-              },
-              "parameters": [
-                "NewShapePainter",
-                "Point1.CenterX()",
-                "Point1.CenterY()",
-                "Point2.CenterX()",
-                "Point2.CenterY()"
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+                  },
+                  "parameters": [
+                    "LoadInRange",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "GroupExists"
+                  },
+                  "parameters": [
+                    "\"Saved\"",
+                    "\"Trees\""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Tree",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "load string that's in the Json format into TempJson, convert the Json into the array Tree which is a structure of the x and y values"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "GroupExists"
+                      },
+                      "parameters": [
+                        "\"Saved\"",
+                        "\"Trees\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "LireFichierTxt"
+                      },
+                      "parameters": [
+                        "\"Saved\"",
+                        "\"Trees\"",
+                        "",
+                        "TempJson"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "JSONToVariableStructure"
+                      },
+                      "parameters": [
+                        "VariableString(TempJson)",
+                        "Trees"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "SceneVariableChildCount"
+                      },
+                      "parameters": [
+                        "Trees",
+                        ">",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 109,
+                        "g": 230,
+                        "r": 255,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "for each child of Trees compare the x and y to the value of point1 and point2, if the coordinates are between the values then add a tree at child.Y , child.Y"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::ForEachChildVariable",
+                      "iterableVariableName": "Trees",
+                      "valueIteratorVariableName": "child",
+                      "keyIteratorVariableName": "",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "child.X",
+                            ">=",
+                            "Point1.X()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "child.Y",
+                            ">=",
+                            "Point1.Y()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "child.X",
+                            "<=",
+                            "Point2.X()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "VarScene"
+                          },
+                          "parameters": [
+                            "child.Y",
+                            "<=",
+                            "Point2.Y()"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Tree",
+                            "Variable(child.X)",
+                            "Variable(child.Y)",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
               ]
             }
-          ]
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "If point1 or point2 are being dragged redraw the boundong box (the Point objects need to be picked here because of the OR condition. Otherwise it wouldn't \"see\" the other object and would use 0,0",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "DraggableBehavior::Dragged"
+                      },
+                      "parameters": [
+                        "Point1",
+                        "Draggable"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "DraggableBehavior::Dragged"
+                      },
+                      "parameters": [
+                        "Point2",
+                        "Draggable"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AjoutObjConcern"
+                  },
+                  "parameters": [
+                    "",
+                    "Point1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AjoutObjConcern"
+                  },
+                  "parameters": [
+                    "",
+                    "Point2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PrimitiveDrawing::Drawer::ClearShapes"
+                  },
+                  "parameters": [
+                    "NewShapePainter"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PrimitiveDrawing::Rectangle"
+                  },
+                  "parameters": [
+                    "NewShapePainter",
+                    "Point1.CenterX()",
+                    "Point1.CenterY()",
+                    "Point2.CenterX()",
+                    "Point2.CenterY()"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
         }
       ],
       "layers": [
