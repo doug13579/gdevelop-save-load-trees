@@ -738,11 +738,46 @@
           "conditions": [
             {
               "type": {
-                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+                "value": "DepartScene"
               },
               "parameters": [
-                "LoadButton",
                 ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "PrimitiveDrawing::Rectangle"
+              },
+              "parameters": [
+                "NewShapePainter",
+                "Point1.CenterX()",
+                "Point1.CenterY()",
+                "Point2.CenterX()",
+                "Point2.CenterY()"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+                  },
+                  "parameters": [
+                    "LoadButton",
+                    ""
+                  ]
+                }
               ]
             }
           ],
